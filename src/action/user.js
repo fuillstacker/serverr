@@ -46,7 +46,6 @@ export const auth = () => {
             localStorage.setItem('token', response.data.token)
             console.log(response.data)
         } catch (e) {
-            console.log(e.response.data.msg)
             localStorage.removeItem('token')
         } finally {
             dispatch(hideLoader())
