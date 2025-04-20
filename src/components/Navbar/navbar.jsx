@@ -17,10 +17,8 @@ const Navbar = () => {
     const [searchName, setSearchName] = useState('')
     const [searchTimeout, setSearchTimeout] = useState(false)
     
- 
-    const avatar = currentUser.avatar ? `${API_URL + currentUser.avatar}` : avatarLogo
-    console.log(currentUser.avatar)
-
+    // Додано перевірку на currentUser
+    const avatar = currentUser?.avatar ? `${API_URL + currentUser.avatar}` : avatarLogo;
 
     const searchHandler = (e) => {
         setSearchName(e.target.value)
@@ -28,37 +26,37 @@ const Navbar = () => {
             clearTimeout(searchTimeout)
         }
         dispatch(showLoader())
-        if(e.target.value != '') {
+        if(e.target.value !== '') {
             setSearchTimeout(setTimeout((value) => {
-            dispatch(searchFiles(e.target.value))
-        }, 500, e.target.value))
-      } else {
-        dispatch(getFiles(currentDir))
-      }
+                dispatch(searchFiles(e.target.value))
+            }, 500, e.target.value))
+        } else {
+            dispatch(getFiles(currentDir))
+        }
     }
 
     return (
         <div className="navbar">
             <div className="container">
-                <img src={Logo} alt="" className="navbar_logo" />
+                <img src={Logo} alt="Logo" className="navbar_logo" />
                 <NavLink to="/">
                     <div className="navbar__header">CLOUD STORAGE</div>
                 </NavLink>
                 {isAuth && <input 
                     value={searchName}
-                    onChange={e => searchHandler((e))}
+                    onChange={searchHandler}
                     className="navbar__search" 
                     type="text" 
-                    placeholder="Search files..."/>}
+                    placeholder="Search files..." />}
                 {!isAuth && <div className="navbar__login"><NavLink to='/login'>Sign In</NavLink></div>}
                 {!isAuth && <div className="navbar__register"><NavLink to='/register'>Sign Up</NavLink></div>}
                 {isAuth && <div className="navbar__login" onClick={() => dispatch(logout())}>Logout</div>}
                 {isAuth && <NavLink to="/profile">
-                <img className="navbar__avatar" src={avatar} alt=""/>
-                      </NavLink>}
+                    <img className="navbar__avatar" src={avatar} alt="Avatar" />
+                </NavLink>}
             </div>
         </div>
     )
 }
 
-export default Navbar
+export default Navbar;
