@@ -1,8 +1,10 @@
 .disk {
-    margin-top: 20px;
+    margin-top: 2vh;
 
     .disk__btns {
         display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
     .disk__create {
@@ -12,19 +14,25 @@
     .disk__upload-input {
         display: none;
     }
+
     .disk__upload-label {
         border: 2px dashed #566855;
-        padding: 5px 10px;
+        padding: 0.5em 1em;
         cursor: pointer;
         margin-left: 10px;
+        white-space: nowrap;
     }
+
     .disk__select {
         margin-left: auto;
     }
 
-    .disk__list, .disk__plate {
-        height: 20px;
-        width: 20px;
+    .disk__list,
+    .disk__plate {
+        height: 5vw;
+        max-height: 30px;
+        width: 5vw;
+        max-width: 30px;
         border: none;
         outline: none;
         cursor: pointer;
@@ -32,40 +40,45 @@
         background-size: contain;
         margin: 0 10px;
     }
+
     .disk__list {
         background-image: url('../../assets/img/list.png');
     }
+
     .disk__plate {
         background-image: url('../../assets/img/plate.png');
     }
 }
 
 .drop__area {
-    width: 100%;
-    height: calc(100vh - 50px - 40px);
+    width: calc(100% - 40px);
+    height: calc(100vh - 90px);
     margin: 20px;
     border: dashed 2px #566855;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 4vw;
+    text-align: center;
 }
 
 .popup {
     width: 100%;
     height: 100vh;
-    background: rgba(0,0,0,0.2);
-    right: 0;
-    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+    position: fixed;
     top: 0;
+    right: 0;
     bottom: 0;
-    position: absolute;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 
     .popup__content {
-        width: 400px;
+        width: 90%;
+        max-width: 400px;
         background: white;
         padding: 20px;
         border-radius: 12px;
@@ -80,10 +93,12 @@
     .popup__header {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     input {
         margin: 20px 0;
+        width: 100%;
     }
 }
 
@@ -103,13 +118,32 @@
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    }
+}
 
-    @keyframes rotation {
+@keyframes rotation {
     0% {
         transform: rotate(0deg);
     }
     100% {
         transform: rotate(360deg);
     }
-    } 
+}
+
+/* Медіа-запити для ще більшої адаптивності */
+@media (max-width: 768px) {
+    .disk__btns {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .disk__upload-label,
+    .disk__create,
+    .disk__select {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .drop__area {
+        font-size: 6vw;
+    }
+}

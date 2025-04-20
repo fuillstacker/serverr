@@ -4,6 +4,7 @@
     justify-content: center;
     background-color: white;
     width: 100%;
+    padding: 0 15px;
 
     .navbar__avatar {
         width: 40px;
@@ -12,18 +13,19 @@
     }
 }
 
-
 .navbar__header {
     margin-left: 10px;
     font-size: 20px;
     font-weight: 700;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .navbar__login {
     margin-left: auto;
     margin-right: 20px;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .navbar__search {
@@ -35,4 +37,52 @@
     width: 1140px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    flex-wrap: wrap;
+}
+
+
+/* Адаптив для планшетів */
+@media (max-width: 992px) {
+    .container {
+        width: 100%;
+    }
+
+    .navbar__search {
+        width: 150px;
+        margin-left: 10px;
+    }
+
+    .navbar__header {
+        font-size: 18px;
+    }
+}
+
+/* Адаптив для мобільних */
+@media (max-width: 576px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 15px;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar__search {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .navbar__login {
+        margin: 10px 0 0 auto;
+    }
+
+    .navbar__header {
+        margin: 10px 0 0 0;
+        font-size: 16px;
+    }
 }

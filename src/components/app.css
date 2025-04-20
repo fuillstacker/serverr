@@ -23,4 +23,25 @@ body {
     width: 1140px;
     display: flex;
     flex-direction: column;
+    padding: 0 20px; /* трішки внутрішніх відступів */
+}
+
+/* Планшети */
+@media (max-width: 1024px) {
+    .wrap {
+        width: 100%;
+        padding: 0 30px;
+    }
+}
+
+/* Телефони */
+@media (max-width: 600px) {
+    .wrap {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .app {
+        padding: 10px;
+    }
 }

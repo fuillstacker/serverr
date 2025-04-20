@@ -1,17 +1,36 @@
 input {
     border: none;
-    border-bottom:#566855 solid 3px;
+    border-bottom: #566855 solid 3px;
     background: transparent;
     width: 100%;
     padding: 3px;
-    transition: all ease 1s;
+    transition: all ease 0.3s;
+    font-size: 16px; /* Встановлено розмір шрифту для базових пристроїв */
+
     &:focus {
         outline: none;
         transform: scale(1.1);
     }
+
+    /* Адаптація для мобільних пристроїв */
+    @media (max-width: 600px) {
+        padding: 5px;
+        font-size: 14px; /* Зменшення шрифту для маленьких екранів */
+    }
+
+    /* Адаптація для планшетів */
+    @media (max-width: 1024px) {
+        font-size: 15px;
+    }
 }
 
 ::-webkit-input-placeholder {
+    color: #566855;
+    font-weight: 700;
+}
+
+/* Для браузерів, які не підтримують webkit */
+input::placeholder {
     color: #566855;
     font-weight: 700;
 }

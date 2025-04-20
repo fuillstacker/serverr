@@ -1,25 +1,30 @@
 .fileplate {
     display: flex;
     flex-wrap: wrap;
-    margin: 20px 0;
-    margin-left: 20px;
-
+    gap: 10px;
+    margin: 2vh 0;
+    margin-left: 2vw;
 }
 
 .filelist {
-    margin: 20px 0;
+    margin: 2vh 0;
+    width: 100%;
 
     .filelist__header {
         display: grid;
         grid-template-columns: 1fr 4fr repeat(4, 1fr);
+        gap: 10px;
+        padding: 0 10px;
     }
 
     .filelist__name {
         grid-column-start: 2;
     }
+
     .filelist__date {
         grid-column-start: 5;
     }
+
     .filelist__size {
         grid-column-start: 6;
         justify-self: center;
@@ -27,13 +32,13 @@
 }
 
 .file-enter-active {
-   animation: file-enter 500ms forwards;
+    animation: file-enter 500ms forwards;
 }
 
 @keyframes file-enter {
     0% {
-      opacity: 0;
-      transform: translateY(-50%);
+        opacity: 0;
+        transform: translateY(-50%);
     }
     100% {
         opacity: 1;
@@ -46,4 +51,24 @@
     justify-content: center;
     align-items: center;
     height: calc(100vh - 50px);
+    padding: 0 10px;
+}
+
+/* Адаптація для мобільних */
+@media (max-width: 768px) {
+    .filelist__header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        font-size: 14px;
+    }
+
+    .filelist__name,
+    .filelist__date,
+    .filelist__size {
+        grid-column-start: auto;
+        width: 100%;
+        text-align: left;
+    }
 }

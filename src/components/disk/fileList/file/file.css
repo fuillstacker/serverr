@@ -5,7 +5,7 @@
     grid-template-columns: 1fr 4fr repeat(4, 1fr);
     align-items: center;
     transition: all ease 1s;
-
+    padding: 10px;
 
     .file__img {
         justify-self: center;
@@ -13,7 +13,6 @@
 
     .file__date {
         grid-column-start: 5;
-
     }
 
     .file__size {
@@ -24,31 +23,28 @@
     .file__btn {
         display: none;
     }
-
-
-
 }
 
 .file:hover {
     transform: scale(1.02);
-}
 
-.file:hover .file__date {
-    grid-column-start: 3;
-}
+    .file__date {
+        grid-column-start: 3;
+    }
 
-.file:hover .file__size {
-    grid-column-start: 4;
-}
+    .file__size {
+        grid-column-start: 4;
+    }
 
-.file:hover .file__download {
-    grid-column-start: 5;
-    display: block;
-}
+    .file__download {
+        grid-column-start: 5;
+        display: block;
+    }
 
-.file:hover .file__delete {
-    grid-column-start: 6;
-    display: block;
+    .file__delete {
+        grid-column-start: 6;
+        display: block;
+    }
 }
 
 .file-plate {
@@ -59,7 +55,9 @@
     flex-direction: column;
     align-items: center;
     margin-top: 15px;
-    flex-wrap: wrap;
+    margin-left: 10px;
+    justify-content: center;
+    border: 1px solid #566855;
 
     .file-plate__img {
         height: 90px;
@@ -70,16 +68,65 @@
         display: none;
     }
 
-
+    &:hover .file-plate__btns {
+        display: flex;
+    }
 }
 
-.file-plate:hover .file-plate__btns {
-    display: flex;
-}
+/* Адаптація під мобільні пристрої */
+@media (max-width: 768px) {
+    .file {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        gap: 5px;
 
-.file-plate {
-    border: 1px solid #566855;
-    flex-wrap: wrap;
-    margin-left: 10px;
-    justify-content: center;
+        .file__img,
+        .file__date,
+        .file__size,
+        .file__btn,
+        .file__download,
+        .file__delete {
+            display: block;
+            grid-column-start: unset;
+            justify-self: flex-start;
+        }
+
+        .file__btn,
+        .file__download,
+        .file__delete {
+            margin-top: 5px;
+        }
+    }
+
+    .file:hover {
+        transform: none;
+
+        .file__date,
+        .file__size,
+        .file__download,
+        .file__delete {
+            display: block;
+        }
+    }
+
+    .file-plate {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding: 10px;
+        gap: 10px;
+        flex-wrap: nowrap;
+
+        .file-plate__img {
+            height: 60px;
+            width: 60px;
+        }
+
+        .file-plate__btns {
+            display: flex;
+            margin-left: auto;
+        }
+    }
 }
