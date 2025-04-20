@@ -17,8 +17,8 @@ const Navbar = () => {
     const [searchName, setSearchName] = useState('')
     const [searchTimeout, setSearchTimeout] = useState(false)
     
-    // Додано перевірку на currentUser
-    const avatar = currentUser?.avatar ? `${API_URL + currentUser.avatar}` : avatarLogo;
+    // Додано перевірку на currentUser та avatar
+    const avatar = (currentUser && currentUser.avatar) ? `${API_URL + currentUser.avatar}` : avatarLogo;
 
     const searchHandler = (e) => {
         setSearchName(e.target.value)
